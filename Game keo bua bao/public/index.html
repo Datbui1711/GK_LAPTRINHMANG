@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kéo Búa Bao - Game Đa Người Chơi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Animated Background -->
+        <div class="animated-bg">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+            <div class="circle circle-4"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="header">
+                <h1 class="title">
+                    <span class="emoji">✂️</span>
+                    Kéo Búa Bao
+                    <span class="emoji">🪨</span>
+                </h1>
+                <p class="subtitle">Game đa người chơi - Chơi với bạn bè ngay!</p>
+            </header>
+
+            <div class="game-card">
+                <div class="card-header">
+                    <h2>Bắt đầu chơi</h2>
+                </div>
+
+                <div class="form-container">
+                    <div class="input-group">
+                        <label for="username">Tên của bạn</label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            placeholder="Nhập tên của bạn..."
+                            maxlength="20"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="room-options">
+                        <button class="option-btn active" data-action="create">
+                            <span class="icon">➕</span>
+                            <span class="text">Tạo phòng mới</span>
+                        </button>
+                        <button class="option-btn" data-action="join">
+                            <span class="icon">🔗</span>
+                            <span class="text">Vào phòng có sẵn</span>
+                        </button>
+                    </div>
+
+                    <div class="room-code-section" id="roomCodeSection" style="display: none;">
+                        <div class="input-group">
+                            <label for="roomCode">Mã phòng</label>
+                            <input 
+                                type="text" 
+                                id="roomCode" 
+                                placeholder="Nhập mã phòng..."
+                                maxlength="6"
+                                autocomplete="off"
+                                style="text-transform: uppercase;"
+                            >
+                        </div>
+                    </div>
+
+                    <button class="primary-btn" id="startBtn">
+                        <span>Bắt đầu</span>
+                        <span class="arrow">→</span>
+                    </button>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-item">
+                        <span class="info-icon">👥</span>
+                        <span class="info-text">2 người chơi</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🎯</span>
+                        <span class="info-text">Best of 3</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">💬</span>
+                        <span class="info-text">Chat real-time</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generated Room Code Display -->
+            <div class="room-code-display" id="generatedRoomCode" style="display: none;">
+                <p class="room-code-label">Mã phòng của bạn:</p>
+                <div class="room-code-box">
+                    <span id="displayRoomCode"></span>
+                    <button class="copy-btn" id="copyBtn">
+                        <span>📋</span>
+                        <span class="tooltip">Sao chép</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
