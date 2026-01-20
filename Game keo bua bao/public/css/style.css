@@ -1,0 +1,589 @@
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Warm, Vibrant Color Palette */
+    --primary-color: #FF6B6B;
+    --secondary-color: #4ECDC4;
+    --accent-color: #FFE66D;
+    --success-color: #6BCB77;
+    --warning-color: #FFA94D;
+    --error-color: #FF6B6B;
+    
+    /* Background Colors */
+    --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --bg-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    
+    /* Card Colors */
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    --card-border: rgba(255, 255, 255, 0.3);
+    
+    /* Text Colors */
+    --text-primary: #2D3748;
+    --text-secondary: #718096;
+    --text-light: #FFFFFF;
+    
+    /* Gradients */
+    --gradient-warm: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+    --gradient-cool: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+    --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-pink: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.3);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 50%;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ============================================
+   Animated Background
+   ============================================ */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    animation: float 20s infinite ease-in-out;
+}
+
+.circle-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 10%;
+    animation-delay: 2s;
+}
+
+.circle-3 {
+    width: 250px;
+    height: 250px;
+    bottom: 10%;
+    left: 50%;
+    animation-delay: 4s;
+}
+
+.circle-4 {
+    width: 150px;
+    height: 150px;
+    top: 40%;
+    left: 70%;
+    animation-delay: 6s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+        opacity: 0.5;
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+        opacity: 0.4;
+    }
+}
+
+/* ============================================
+   Container & Layout
+   ============================================ */
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+.main-content {
+    width: 100%;
+    max-width: 500px;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   Header
+   ============================================ */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.title {
+    font-size: 4.5rem;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    animation: pulse 2s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    text-shadow: 0 4px 20px rgba(255, 107, 107, 0.3);
+}
+
+.title .emoji {
+    font-size: 3.5rem;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+.title .emoji:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.subtitle {
+    font-size: 1.8rem;
+    color: var(--text-light);
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+/* ============================================
+   Game Card
+   ============================================ */
+.game-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-xl);
+    box-shadow: var(--card-shadow);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    animation: slideIn 0.6s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.card-header h2 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+    background: var(--gradient-purple);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+}
+
+/* ============================================
+   Form Elements
+   ============================================ */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.input-group label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.input-group input {
+    padding: var(--spacing-md);
+    border: 2px solid #E2E8F0;
+    border-radius: var(--radius-md);
+    font-size: 1.6rem;
+    font-family: inherit;
+    transition: all var(--transition-base);
+    background: white;
+    color: var(--text-primary);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+    transform: translateY(-2px);
+}
+
+.input-group input::placeholder {
+    color: #CBD5E0;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.room-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-sm) 0;
+}
+
+.option-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    border: 2px solid #E2E8F0;
+    border-radius: var(--radius-md);
+    background: white;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.option-btn .icon {
+    font-size: 2.4rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.option-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.option-btn.active {
+    background: var(--gradient-warm);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.primary-btn {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-md);
+    background: var(--gradient-purple);
+    color: var(--text-light);
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+    box-shadow: var(--shadow-lg);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.primary-btn:active {
+    transform: translateY(-1px);
+}
+
+.primary-btn .arrow {
+    font-size: 2rem;
+    transition: transform var(--transition-base);
+}
+
+.primary-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ============================================
+   Room Code Section
+   ============================================ */
+.room-code-section {
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.room-code-display {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.room-code-label {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.room-code-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#displayRoomCode {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--text-light);
+    letter-spacing: 0.2em;
+    font-family: 'Courier New', monospace;
+}
+
+.copy-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-size: 1.6rem;
+    position: relative;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+.copy-btn .tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-primary);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+    margin-bottom: 5px;
+}
+
+.copy-btn:hover .tooltip {
+    opacity: 1;
+}
+
+/* ============================================
+   Info Section
+   ============================================ */
+.info-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid #E2E8F0;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.info-icon {
+    font-size: 2.4rem;
+}
+
+.info-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+    
+    .title .emoji {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .game-card {
+        padding: var(--spacing-md);
+    }
+    
+    .room-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .circle {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 56.25%;
+    }
+    
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .app-container {
+        padding: var(--spacing-sm);
+    }
+}
+
