@@ -135,5 +135,5 @@ MIT License
 
 ## 👨‍💻 Author
 
-Game được phát triển với ❤️
+Game được phát triển với Nhóm 10
 
